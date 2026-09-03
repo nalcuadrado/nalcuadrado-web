@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Tipografías: Títulos Auria Bold (Respaldo: Abril Fatface / Syne). Forzado a minúsculas según la identidad. */
+h1, h2, h3, h4, .font-display {
+  font-family: 'Auria', 'Abril Fatface', 'Syne', sans-serif;
+  font-weight: bold;
+  text-transform: lowercase;
+}
+
+/* Textos y Subtítulos: Vole Semibold (Respaldo: Roboto Serif). Casing natural. */
+body, p, span, div, button, input, textarea, select {
+  font-family: 'Vole', 'Roboto Serif', serif;
+  font-weight: 600;
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 3D Transform Styles para Flip Cards y Parallax */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.group:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+/* Ocultar el cursor predeterminado del navegador para que solo se vea el cursor personalizado */
+@media (pointer: fine) {
+  html, body, a, button, input, textarea, select, [role="button"], * {
+    cursor: none !important;
+  }
+}
+
+/* Inputs Personalizados Minimalistas */
+.input-clean {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  color: #fff;
+  transition: border-color 0.3s;
+}
+
+.input-clean:focus {
+  outline: none;
+  border-bottom: 1px solid #CDFC8A;
+  box-shadow: none;
+}
+
+/* Textura Grid Sutil */
+.bg-grid-pattern {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Animaciones Flotantes */
+@keyframes float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(3%, 5%) scale(1.05); }
+}
+
+@keyframes float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-4%, -3%) scale(0.95); }
+}
+
+.animate-float-1 { animation: float-1 15s ease-in-out infinite; }
+.animate-float-2 { animation: float-2 18s ease-in-out infinite; }
+
+/* Animaciones para Cursors Limitadas a los bordes */
+@keyframes float-cursor-1 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(20px, 30px); }
+  66% { transform: translate(10px, -20px); }
+}
+
+@keyframes float-cursor-2 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-25px, -30px); }
+  66% { transform: translate(-10px, 20px); }
+}
+
+.animate-cursor-1 { animation: float-cursor-1 15s ease-in-out infinite; }
+.animate-cursor-2 { animation: float-cursor-2 18s ease-in-out infinite; }
+
+/* Giro Lento de Estrellas y Símbolos */
+@keyframes spin-slow {
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Fondo Aurora Dinámico con la Paleta de la Marca (Forest Green, Fresh Lime, Dark Purple, Soft Lavender) */
+.hero-aurora {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 85% 30%, rgba(2, 46, 33, 0.45), transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(205, 252, 138, 0.22), transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(60, 24, 60, 0.55), transparent 50%);
+  filter: blur(80px);
+  opacity: 0.95;
+  animation: aurora-shift 15s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes aurora-shift {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.1) translate(2%, 3%); }
+  100% { transform: scale(1) translate(-2%, -1%); }
+}
