@@ -16,17 +16,14 @@ export const Footer = () => {
       <div className="container mx-auto px-4 md:px-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-20">
           
-          {/* Columna Marca */}
+          {/* Columna Marca - Logo Oficial n² sin fondo y más grande */}
           <div className="col-span-1 sm:col-span-2">
-            <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="mb-4 sm:mb-6">
               <img 
                 src="/logo1.svg" 
                 alt="Logo n²" 
-                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain drop-shadow-sm" 
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain" 
               />
-              <div className="text-4xl sm:text-5xl md:text-6xl font-display text-[#022E21] flex items-end tracking-tighter">
-                n<span className="text-[#3C183C] mb-1.5 sm:mb-2 ml-1 text-2xl sm:text-3xl">2</span>
-              </div>
             </div>
             <p className="text-[#022E21]/80 text-sm sm:text-base max-w-md font-medium leading-relaxed">
               Agencia digital boutique especializada en desarrollo de software de alto rendimiento y marketing de resultados.

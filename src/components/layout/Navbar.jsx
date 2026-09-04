@@ -16,25 +16,20 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
         {/* Header principal estilizado y más fino con centrado absoluto de enlaces */}
         <div className="relative flex justify-between items-center transition-all duration-300 bg-[#121212]/85 backdrop-blur-xl shadow-2xl px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 rounded-full border border-white/10">
           
-          {/* Logo Oficial n² en formato .svg */}
+          {/* Logo Oficial n² en formato .svg sin fondo y más grande */}
           <div 
-            className="flex items-center gap-2 sm:gap-3 z-10 cursor-pointer group"
+            className="flex items-center z-10 cursor-pointer group"
             onClick={() => handleNavClick('inicio')}
             role="button"
             tabIndex={0}
             onKeyDown={(e) => e.key === 'Enter' && handleNavClick('inicio')}
             aria-label="Ir al inicio de n²"
           >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl bg-[#CDFC8A] p-1 flex items-center justify-center shadow-[0_0_15px_rgba(205,252,138,0.25)] transition-transform duration-300 group-hover:scale-105">
-              <img 
-                src="/logo1.svg" 
-                alt="Logo n²" 
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div className="text-xl sm:text-2xl md:text-3xl font-display text-white flex items-end tracking-tighter">
-              n<span className="text-[#CDFC8A] mb-1 sm:mb-1.5 ml-0.5 text-base sm:text-lg md:text-xl">2</span>
-            </div>
+            <img 
+              src="/logo1.svg" 
+              alt="Logo n²" 
+              className="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </div>
           
           {/* Desktop Menu - Enlaces perfectamente centrados en su totalidad */}
