@@ -26,7 +26,7 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
             aria-label="Ir al inicio de n²"
           >
             <img 
-              src="/logo1.svg" 
+              src="/logo-green.svg" 
               alt="Logo n²" 
               className="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
