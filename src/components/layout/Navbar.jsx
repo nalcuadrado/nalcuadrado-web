@@ -14,19 +14,27 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'top-2 md:top-3' : 'top-4 md:top-6'}`}>
       <div className="container mx-auto px-4 md:px-10">
         {/* Header principal estilizado y más fino con centrado absoluto de enlaces */}
-        <div className="relative flex justify-between items-center transition-all duration-300 bg-[#121212]/85 backdrop-blur-xl shadow-2xl px-6 md:px-8 py-3 md:py-3.5 rounded-full border border-white/10">
+        <div className="relative flex justify-between items-center transition-all duration-300 bg-[#121212]/85 backdrop-blur-xl shadow-2xl px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 rounded-full border border-white/10">
           
-          {/* Logo y Elemento Gráfico Neo-brutalista */}
-          <div className="flex items-center gap-2.5 z-10">
-            <div 
-              className="text-2xl md:text-3xl font-display text-white cursor-pointer flex items-end tracking-tighter" 
-              onClick={() => handleNavClick('inicio')}
-            >
-              n<span className="text-[#CDFC8A] mb-2 ml-0.5 text-lg md:text-xl">2</span>
+          {/* Logo Oficial n² en formato .svg */}
+          <div 
+            className="flex items-center gap-2 sm:gap-3 z-10 cursor-pointer group"
+            onClick={() => handleNavClick('inicio')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && handleNavClick('inicio')}
+            aria-label="Ir al inicio de n²"
+          >
+            <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl bg-[#CDFC8A] p-1 flex items-center justify-center shadow-[0_0_15px_rgba(205,252,138,0.25)] transition-transform duration-300 group-hover:scale-105">
+              <img 
+                src="/logo1.svg" 
+                alt="Logo n²" 
+                className="w-full h-full object-contain"
+              />
             </div>
-            <svg className="hidden md:block w-6 h-6 animate-spin-slow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M50 0L57 35L93 15L65 43L100 50L65 57L93 85L57 65L50 100L43 65L7 85L35 57L0 50L35 43L7 15L43 35L50 0Z" fill="#CDFC8A"/>
-            </svg>
+            <div className="text-xl sm:text-2xl md:text-3xl font-display text-white flex items-end tracking-tighter">
+              n<span className="text-[#CDFC8A] mb-1 sm:mb-1.5 ml-0.5 text-base sm:text-lg md:text-xl">2</span>
+            </div>
           </div>
           
           {/* Desktop Menu - Enlaces perfectamente centrados en su totalidad */}
@@ -55,7 +63,7 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
 
           {/* Mobile Menu Toggle Button */}
           <button 
-            className="md:hidden text-white p-1.5 focus:outline-none" 
+            className="md:hidden text-white p-1.5 focus:outline-none z-10" 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Abrir menú"
           >
@@ -63,14 +71,14 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
           </button>
         </div>
 
-        {/* Mobile Dropdown */}
+        {/* Mobile Dropdown Sólido y de Alta Legibilidad */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 glass-panel rounded-2xl p-4 flex flex-col space-y-2 border border-white/10 relative z-50">
+          <div className="md:hidden mt-3 bg-[#121212]/95 backdrop-blur-2xl rounded-3xl p-4 sm:p-5 flex flex-col space-y-1.5 border border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.9)] relative z-50 animate-fade-in">
             {navLinks.map((item) => (
               <button 
                 key={item.id} 
                 onClick={() => handleNavClick(item.id)} 
-                className="text-left px-4 py-3 rounded-xl hover:bg-white/5 text-gray-300 font-bold uppercase tracking-widest"
+                className="text-left px-4 py-3 rounded-2xl hover:bg-white/10 text-gray-200 hover:text-white font-bold text-sm uppercase tracking-widest transition-all"
               >
                 {item.label}
               </button>
@@ -78,9 +86,9 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
             <div className="h-[1px] w-full bg-white/10 my-2"></div>
             <button 
               onClick={() => handleNavClick('contacto')} 
-              className="text-left px-4 py-3 text-[#CDFC8A] font-bold uppercase tracking-widest"
+              className="w-full text-center px-4 py-3.5 rounded-2xl bg-[#CDFC8A] text-[#022E21] font-bold text-sm uppercase tracking-widest shadow-lg flex items-center justify-center gap-2"
             >
-              Empezar Proyecto
+              Empezar Proyecto <ArrowRight size={16} className="-rotate-45" />
             </button>
           </div>
         )}

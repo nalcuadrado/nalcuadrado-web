@@ -66,48 +66,48 @@ export const HeroSection = ({ scrollTo }) => {
       ref={heroRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="min-h-screen flex items-center justify-center pt-36 md:pt-44 pb-24 rounded-b-[2.5rem] md:rounded-b-[4rem] relative overflow-hidden border-b border-white/5 perspective-1000 bg-[#050505] scroll-mt-24"
+      className="min-h-screen flex items-center justify-center pt-32 sm:pt-36 md:pt-44 pb-16 sm:pb-24 rounded-b-[2.5rem] md:rounded-b-[4rem] relative overflow-hidden border-b border-white/5 perspective-1000 bg-[#050505] scroll-mt-24"
     >
       <HeroDecorations />
 
-      <div className="container mx-auto px-4 md:px-10 relative z-20 flex flex-col items-center justify-center h-full w-full mt-8">
+      <div className="container mx-auto px-4 md:px-10 relative z-20 flex flex-col items-center justify-center h-full w-full mt-4 sm:mt-8">
         
         {/* Gran Título Central con Parallax e Intro GSAP */}
         <div 
-          className="text-center transition-transform duration-300 ease-out z-30 relative w-full mb-20"
+          className="text-center transition-transform duration-300 ease-out z-30 relative w-full mb-10 sm:mb-16 md:mb-20"
           style={{ transform: `translate3d(${mousePos.x * 0.1}px, ${mousePos.y * 0.1}px, 0px)` }}
         >
-          <h1 ref={title1Ref} className="text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-display tracking-tighter text-white leading-[0.9] drop-shadow-2xl">
+          <h1 ref={title1Ref} className="text-4xl sm:text-6xl md:text-[7.5rem] lg:text-[10rem] font-display tracking-tighter text-white leading-[0.92] drop-shadow-2xl">
             potenciamos
           </h1>
           
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
-            <div ref={badgeRef} className="bg-[#022E21]/60 border border-[#022E21] backdrop-blur-md px-6 py-2 rounded-full transform -rotate-2 shadow-[0_0_35px_rgba(2,46,33,0.6)]">
-              <span className="text-5xl sm:text-6xl md:text-[7rem] lg:text-[8rem] font-display tracking-tighter text-[#CDFC8A] leading-none block">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mt-2 sm:mt-3">
+            <div ref={badgeRef} className="bg-[#022E21]/60 border border-[#022E21] backdrop-blur-md px-4 sm:px-6 py-1.5 sm:py-2 rounded-full transform -rotate-2 shadow-[0_0_35px_rgba(2,46,33,0.6)]">
+              <span className="text-3xl sm:text-5xl md:text-[6.5rem] lg:text-[8rem] font-display tracking-tighter text-[#CDFC8A] leading-none block">
                 tu marca
               </span>
             </div>
           </div>
 
-          <h1 ref={title2Ref} className="text-4xl sm:text-5xl md:text-[5rem] lg:text-[6rem] font-display tracking-tighter text-white leading-[0.9] drop-shadow-2xl mt-4">
+          <h1 ref={title2Ref} className="text-2xl sm:text-4xl md:text-[4.5rem] lg:text-[6rem] font-display tracking-tighter text-white leading-[0.92] drop-shadow-2xl mt-2.5 sm:mt-4">
             al cuadrado
           </h1>
         </div>
 
         {/* 3D Floating Widgets animados con GSAP */}
-        <div ref={widgetsRef} className="relative w-full flex flex-col md:flex-row justify-center items-center gap-10 transform-style-3d perspective-1000 z-40">
+        <div ref={widgetsRef} className="relative w-full flex flex-col md:flex-row justify-center items-center gap-5 sm:gap-8 md:gap-10 transform-style-3d perspective-1000 z-40">
           <FloatingPill mousePos={mousePos} />
 
           {/* Call To Action Flotante */}
           <div 
-            className="transition-transform duration-500 ease-out z-50"
+            className="transition-transform duration-500 ease-out z-50 w-full sm:w-auto flex justify-center px-2 sm:px-0"
             style={{ transform: `translate3d(${mousePos.x * 0.8}px, ${mousePos.y * 0.8}px, 60px)` }}
           >
             <button 
               onClick={() => scrollTo('contacto')} 
-              className="bg-[#CDFC8A] text-[#022E21] px-10 py-5 rounded-full font-bold uppercase tracking-widest text-lg hover:bg-white transition-colors shadow-[0_0_50px_rgba(205,252,138,0.45)] flex items-center gap-3 cursor-pointer"
+              className="w-full sm:w-auto max-w-xs sm:max-w-none justify-center bg-[#CDFC8A] text-[#022E21] px-7 sm:px-10 py-3.5 sm:py-5 rounded-full font-bold uppercase tracking-widest text-sm sm:text-lg hover:bg-white transition-colors shadow-[0_0_50px_rgba(205,252,138,0.45)] flex items-center gap-3 cursor-pointer"
             >
-              Comenzar Ahora <ArrowRight size={20} className="-rotate-45" />
+              Comenzar Ahora <ArrowRight size={18} className="-rotate-45 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
