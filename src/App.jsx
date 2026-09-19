@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useScrollPosition from './hooks/useScrollPosition';
 import BackgroundGlows from './components/common/BackgroundGlows';
 import CustomCursor from './components/common/CustomCursor';
@@ -16,8 +16,7 @@ export default function App() {
   const scrollTo = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -80; // Deja el navbar flotando cómodamente arriba del título
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      const y = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };

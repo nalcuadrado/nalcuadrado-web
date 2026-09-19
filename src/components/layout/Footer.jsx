@@ -1,14 +1,14 @@
 import React from 'react';
-import { Instagram, Linkedin, Twitter } from '../common/SocialIcons';
-import { footerLinks } from '../../data/navigationData';
+import { Instagram, TikTok, WhatsApp } from '../common/SocialIcons';
+import { footerLinks, contactInfo } from '../../data/navigationData';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialIcons = [
-    { icon: <Instagram size={24} />, link: '#', label: 'Instagram' },
-    { icon: <Linkedin size={24} />, link: '#', label: 'LinkedIn' },
-    { icon: <Twitter size={24} />, link: '#', label: 'Twitter' },
+    { icon: <Instagram size={22} />, link: 'https://www.instagram.com/nalcuadrado.ve/', label: 'Instagram' },
+    { icon: <TikTok size={20} />, link: 'https://www.tiktok.com/@n.alcuadrado2', label: 'TikTok' },
+    { icon: <WhatsApp size={22} />, link: contactInfo.whatsappUrl, label: 'WhatsApp' },
   ];
 
   return (
@@ -20,13 +20,13 @@ export const Footer = () => {
           <div className="col-span-1 sm:col-span-2">
             <div className="mb-4 sm:mb-6">
               <img 
-                src="/logo1.svg" 
-                alt="Logo n²" 
+                src="/ISOTIPO.svg" 
+                alt="Logo N²" 
                 className="h-16 sm:h-20 md:h-24 w-auto object-contain" 
               />
             </div>
             <p className="text-[#022E21]/80 text-sm sm:text-base max-w-md font-medium leading-relaxed">
-              Agencia digital boutique especializada en desarrollo de software de alto rendimiento y marketing de resultados.
+              Agencia digital híbrida. La síntesis definitiva entre ingeniería de software de alto rendimiento y estrategia integral de social media, community management y edición de video.
             </p>
           </div>
           
@@ -52,6 +52,8 @@ export const Footer = () => {
                 <a 
                   key={idx} 
                   href={social.link} 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#022E21]/8 border border-[#022E21]/15 flex items-center justify-center text-[#022E21] hover:bg-[#3C183C] hover:text-[#D2CBFE] transition-all hover:-translate-y-1 cursor-pointer"
                 >
@@ -62,14 +64,10 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Barra inferior de copyright y políticas */}
-        <div className="border-t border-[#022E21]/15 pt-8 sm:pt-10 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6 text-center sm:text-left">
-          <div className="text-xs font-bold text-[#022E21]/70 uppercase tracking-widest">
-            © {currentYear} n cuadrado. todos los derechos reservados.
-          </div>
-          <div className="flex gap-6 text-xs font-bold text-[#022E21]/70 uppercase tracking-widest">
-            <a href="#" className="hover:text-[#3C183C] transition-colors">Privacidad</a>
-            <a href="#" className="hover:text-[#3C183C] transition-colors">Términos</a>
+        {/* Barra inferior de copyright */}
+        <div className="border-t border-[#022E21]/15 pt-8 sm:pt-10 flex justify-center items-center text-center">
+          <div className="text-xs font-semibold text-[#022E21]/80 tracking-wider">
+            © {currentYear} N² (N al Cuadrado). Todos los derechos reservados.
           </div>
         </div>
       </div>

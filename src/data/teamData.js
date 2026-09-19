@@ -1,39 +1,39 @@
 export const teamData = [
   {
-    id: 'alicia',
-    name: 'alicia s.',
+    id: 'nai',
+    name: 'Nai',
     role: 'Tech Lead',
-    title: 'la arquitecta',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
-    accentColor: '#3C183C',
-    accentColorDark: '#200c20',
-    glowColor: 'rgba(60,24,60,0.4)',
-    shadowGlow: 'rgba(60,24,60,0.65)',
-    bulletColor: '#CDFC8A',
-    bio: 'Especialista en arquitecturas escalables y frontend moderno. Si se puede codificar, Alicia lo hace más rápido y seguro. Enfocada en performance y UI limpios.',
-    skills: ['React & Next.js', 'Node & Python', 'Cloud Architecture'],
+    title: 'La Arquitecta',
+    image: '/nai.jpeg',
+    accentColor: '#CDFC8A',
+    accentColorDark: '#a3db52',
+    glowColor: 'rgba(205,252,138,0.3)',
+    shadowGlow: 'rgba(205,252,138,0.45)',
+    bulletColor: '#022E21',
+    bio: 'Especialista en arquitecturas escalables y código limpio sin deuda técnica. Si se puede programar, Nai lo construye con alto rendimiento y máxima seguridad.',
+    skills: ['Web Apps', 'Mobile Apps', 'Custom Software'],
     socials: {
-      linkedin: '#',
-      github: '#'
+      linkedin: 'https://www.linkedin.com/in/nairuma-fern%C3%A1ndez-8212942b8/',
+      instagram: 'https://www.instagram.com/nairumadev/'
     },
     delay: '0.1s'
   },
   {
-    id: 'lily',
-    name: 'lily c.',
+    id: 'nicky',
+    name: 'Nicky',
     role: 'Marketing Lead',
-    title: 'la estratega',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80',
-    accentColor: '#CDFC8A',
-    accentColorDark: '#a3db52',
-    glowColor: 'rgba(205,252,138,0.25)',
-    shadowGlow: 'rgba(205,252,138,0.45)',
-    bulletColor: '#022E21',
-    bio: 'Obsesionada con los datos y la psicología del consumidor. Convierte clics en clientes y marcas en referentes. La creatividad con propósito es su fuerte.',
-    skills: ['Performance Ads', 'SEO / SEM', 'Data Analytics'],
+    title: 'La Estratega',
+    image: '/nicky.jpeg',
+    accentColor: '#3C183C',
+    accentColorDark: '#200c20',
+    glowColor: 'rgba(60,24,60,0.5)',
+    shadowGlow: 'rgba(60,24,60,0.65)',
+    bulletColor: '#CDFC8A',
+    bio: 'Especialista en estrategia de contenidos, narrativa visual y psicología del consumidor. Nicky convierte comunidades en clientes y marcas en referentes del sector.',
+    skills: ['Social Media & Grillas', 'Community & Guionización', 'Edición de Videos'],
     socials: {
-      linkedin: '#',
-      twitter: '#'
+      linkedin: 'https://www.linkedin.com/in/nicmery-evans-3b79a7436/',
+      instagram: 'https://www.instagram.com/nicmeryevansmkt/'
     },
     delay: '0.2s'
   }

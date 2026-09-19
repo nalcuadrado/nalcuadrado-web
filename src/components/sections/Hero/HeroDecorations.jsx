@@ -42,14 +42,14 @@ export const HeroDecorations = () => {
       <div className="absolute top-[40%] left-[3%] md:left-[8%] z-30 animate-cursor-1 pointer-events-none hidden lg:block">
         <MousePointer2 size={32} className="text-[#CDFC8A] fill-[#CDFC8A] -rotate-12 drop-shadow-[0_5px_15px_rgba(205,252,138,0.6)]" />
         <div className="bg-[#CDFC8A] text-[#022E21] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest absolute top-8 left-8 shadow-xl whitespace-nowrap">
-          alicia
+          Nai
         </div>
       </div>
       
       <div className="absolute top-[40%] right-[3%] md:right-[8%] z-30 animate-cursor-2 pointer-events-none hidden lg:block">
         <MousePointer2 size={32} className="text-[#D2CBFE] fill-[#D2CBFE] -rotate-12 drop-shadow-[0_5px_15px_rgba(210,203,254,0.6)]" />
         <div className="bg-[#3C183C] text-[#D2CBFE] border border-[#D2CBFE]/40 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest absolute top-8 left-8 shadow-xl whitespace-nowrap">
-          lily
+          Nicky
         </div>
       </div>
     </>

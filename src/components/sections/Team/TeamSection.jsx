@@ -36,7 +36,7 @@ export const TeamSection = () => {
         <AnimatedSection className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-10 gap-4 sm:gap-6 border-b border-white/10 pb-4">
           <div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-display text-white tracking-tight leading-none">
-              las mentes <br/><span className="text-[#CDFC8A]">detrás</span>
+              Las mentes <br/><span className="text-[#CDFC8A]">detrás</span>
             </h2>
           </div>
           <p className="text-gray-300 max-w-sm text-sm md:text-base leading-relaxed font-normal">
@@ -44,10 +44,10 @@ export const TeamSection = () => {
           </p>
         </AnimatedSection>
 
-        {/* Tarjetas Flip 3D al tamaño completo de la cuadrícula */}
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 w-full">
+        {/* Tarjetas Flip 3D adaptadas al aspect ratio vertical de las fotos */}
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto w-full justify-items-center items-center">
           {teamData.map((member) => (
-            <AnimatedSection key={member.id} delay={member.delay} className="w-full">
+            <AnimatedSection key={member.id} delay={member.delay} className="w-full flex justify-center">
               <FlipCard member={member} />
             </AnimatedSection>
           ))}

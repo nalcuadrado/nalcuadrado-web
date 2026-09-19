@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
 
 export const ServiceCard = ({ item, theme = 'dev' }) => {
   const isDev = theme === 'dev';
@@ -13,8 +12,17 @@ export const ServiceCard = ({ item, theme = 'dev' }) => {
     ? 'bg-[#3C183C]/80 border border-white/10 text-[#CDFC8A] group-hover:bg-[#CDFC8A] group-hover:text-[#022E21]'
     : 'bg-[#022E21]/80 border border-white/10 text-[#CDFC8A] group-hover:bg-[#CDFC8A] group-hover:text-[#022E21]';
 
+  const handleScrollToContact = () => {
+    const el = document.getElementById('contacto');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="bg-[#121212]/95 rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-10 border border-white/10 hover:border-[#CDFC8A]/50 transition-all duration-300 group relative overflow-hidden hover:-translate-y-2 cursor-pointer shadow-2xl backdrop-blur-xl">
+    <div 
+      onClick={handleScrollToContact}
+      className="bg-[#121212]/95 rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-10 border border-white/10 hover:border-[#CDFC8A]/50 transition-all duration-300 group relative overflow-hidden hover:-translate-y-2 cursor-pointer shadow-2xl backdrop-blur-xl h-full">
       {/* Sombra de iluminación suave interior */}
       <div className={`absolute top-0 right-0 w-40 h-40 ${innerGlow} rounded-full filter blur-[50px] transition-all duration-500 pointer-events-none`}></div>
       
@@ -29,14 +37,9 @@ export const ServiceCard = ({ item, theme = 'dev' }) => {
         </h3>
         
         {/* Descripción clara y 100% legible */}
-        <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 font-normal">
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-normal">
           {item.desc}
         </p>
-        
-        {/* Botón de acción en Fresh Lime de la marca */}
-        <div className="text-xs sm:text-sm text-[#CDFC8A] group-hover:text-white uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all font-bold">
-          Explorar Detalles <ArrowRight size={16} className="-rotate-45" />
-        </div>
       </div>
     </div>
   );

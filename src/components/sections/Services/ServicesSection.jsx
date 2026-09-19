@@ -8,7 +8,10 @@ export const ServicesSection = () => {
   const [activeTab, setActiveTab] = useState('dev');
 
   return (
-    <section id="servicios" className="pt-28 md:pt-44 pb-20 md:pb-36 bg-transparent relative z-10 scroll-mt-20 md:scroll-mt-28 overflow-hidden">
+    <section 
+      id="servicios" 
+      className="min-h-screen flex flex-col justify-center pt-24 sm:pt-28 md:pt-36 pb-20 md:pb-28 bg-transparent relative z-10 scroll-mt-0 overflow-hidden"
+    >
       {/* Elementos gráficos decorativos estilo Neo-brutalista */}
       <svg 
         className="absolute top-12 right-4 sm:right-6 md:right-16 animate-spin-slow opacity-60 w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 pointer-events-none z-0" 
@@ -34,26 +37,26 @@ export const ServicesSection = () => {
         {/* Cabecera y Selector de Pestañas con espaciado balanceado y adaptable */}
         <AnimatedSection className="flex flex-col items-center mb-12 sm:mb-20 text-center">
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-display tracking-tight text-white mb-6 sm:mb-10 leading-tight">
-            elige tu <span className="text-[#CDFC8A]">solución</span>
+            Elige tu <span className="text-[#CDFC8A]">solución</span>
           </h2>
           
-          <div className="flex bg-[#121212]/90 backdrop-blur-xl p-1.5 sm:p-2 rounded-full border border-white/10 w-full max-w-xs sm:max-w-md mx-auto shadow-2xl justify-center">
+          <div className="inline-flex items-center bg-[#121212]/90 backdrop-blur-xl p-1.5 rounded-full border border-white/10 mx-auto shadow-2xl relative">
             <button 
               onClick={() => setActiveTab('dev')}
-              className={`flex-1 justify-center px-4 sm:px-8 md:px-10 py-2.5 sm:py-3.5 md:py-4 rounded-full text-xs sm:text-sm uppercase tracking-widest transition-all duration-300 flex items-center gap-2 sm:gap-3 cursor-pointer ${
+              className={`min-w-[140px] sm:min-w-[180px] justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm uppercase tracking-widest transition-all duration-300 flex items-center gap-2 sm:gap-2.5 cursor-pointer border ${
                 activeTab === 'dev' 
-                  ? 'bg-[#3C183C] text-white border border-[#CDFC8A]/30 shadow-lg scale-105 font-bold' 
-                  : 'text-gray-400 hover:text-white'
+                  ? 'bg-[#3C183C] text-white border-[#CDFC8A]/30 shadow-md font-bold' 
+                  : 'text-gray-400 hover:text-white border-transparent'
               }`}
             >
               <Code size={16} className="sm:w-[18px] sm:h-[18px]" /> Desarrollo
             </button>
             <button 
               onClick={() => setActiveTab('mkt')}
-              className={`flex-1 justify-center px-4 sm:px-8 md:px-10 py-2.5 sm:py-3.5 md:py-4 rounded-full text-xs sm:text-sm uppercase tracking-widest transition-all duration-300 flex items-center gap-2 sm:gap-3 cursor-pointer ${
+              className={`min-w-[140px] sm:min-w-[180px] justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm uppercase tracking-widest transition-all duration-300 flex items-center gap-2 sm:gap-2.5 cursor-pointer border ${
                 activeTab === 'mkt' 
-                  ? 'bg-[#CDFC8A] text-[#022E21] shadow-lg scale-105 font-bold' 
-                  : 'text-gray-400 hover:text-white'
+                  ? 'bg-[#CDFC8A] text-[#022E21] border-transparent shadow-md font-bold' 
+                  : 'text-gray-400 hover:text-white border-transparent'
               }`}
             >
               <Megaphone size={16} className="sm:w-[18px] sm:h-[18px]" /> Marketing
@@ -69,6 +72,11 @@ export const ServicesSection = () => {
             </AnimatedSection>
           ))}
         </div>
+
+        {/* Nota de servicio oficial */}
+        <p className="text-center text-xs sm:text-sm text-gray-400 mt-8 sm:mt-12 font-normal">
+          * Nota de servicio: La creación de flyers y carruseles se ofrece como servicio aparte.
+        </p>
 
       </div>
     </section>

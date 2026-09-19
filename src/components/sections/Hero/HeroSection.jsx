@@ -10,6 +10,7 @@ export const HeroSection = ({ scrollTo }) => {
   const title1Ref = useRef(null);
   const badgeRef = useRef(null);
   const title2Ref = useRef(null);
+  const subtitleRef = useRef(null);
   const widgetsRef = useRef(null);
 
   useEffect(() => {
@@ -35,6 +36,11 @@ export const HeroSection = ({ scrollTo }) => {
         opacity: 0,
         duration: 0.9
       }, '-=0.6')
+      .from(subtitleRef.current, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8
+      }, '-=0.4')
       .from(widgetsRef.current?.children || [], {
         y: 50,
         opacity: 0,
@@ -78,7 +84,7 @@ export const HeroSection = ({ scrollTo }) => {
           style={{ transform: `translate3d(${mousePos.x * 0.1}px, ${mousePos.y * 0.1}px, 0px)` }}
         >
           <h1 ref={title1Ref} className="text-4xl sm:text-6xl md:text-[7.5rem] lg:text-[10rem] font-display tracking-tighter text-white leading-[0.92] drop-shadow-2xl">
-            potenciamos
+            Potenciamos
           </h1>
           
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mt-2 sm:mt-3">

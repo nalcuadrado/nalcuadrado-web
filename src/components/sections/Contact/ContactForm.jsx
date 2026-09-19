@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ArrowRight, CircleCheck, ChevronDown, Check } from 'lucide-react';
+import { contactInfo } from '../../../data/navigationData';
 
 const serviceOptions = [
-  { value: 'dev', label: 'Desarrollo Web / App' },
-  { value: 'mkt', label: 'Marketing & Growth' },
-  { value: 'both', label: 'Paquete Integral (n²)' }
+  { value: 'integral', label: 'Ecosistema Integral (Dev + Marketing)' },
+  { value: 'software', label: 'Desarrollo de Software / Web / App' },
+  { value: 'social_video', label: 'Social Media Management & Edición de Video' },
+  { value: 'flyers', label: 'Creación de Flyers & Carruseles (Servicio aparte)' }
 ];
 
 export const ContactForm = () => {
@@ -15,6 +17,7 @@ export const ContactForm = () => {
     detalles: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [whatsappLink, setWhatsappLink] = useState('');
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const selectRef = useRef(null);
 
@@ -45,7 +48,26 @@ export const ContactForm = () => {
       setIsSelectOpen(true);
       return;
     }
+
+    const serviceLabel = serviceOptions.find((opt) => opt.value === formData.servicio)?.label || formData.servicio;
+    const detallesText = formData.detalles.trim() ? formData.detalles.trim() : 'Sin detalles adicionales especificados.';
+
+    // Mensaje estructurado sin emojis para máxima compatibilidad con PC y todos los sistemas
+    const message = `¡Hola, equipo de N²!\n\n` +
+      `Vengo desde la web y me gustaría cotizar una propuesta:\n\n` +
+      `- *Nombre:* ${formData.nombre.trim()}\n` +
+      `- *Email:* ${formData.email.trim()}\n` +
+      `- *Servicio:* ${serviceLabel}\n` +
+      `- *Detalles:* ${detallesText}\n\n` +
+      `¡Quedo a la espera de su respuesta!`;
+
+    const waUrl = `${contactInfo.whatsappUrl}?text=${encodeURIComponent(message)}`;
+    setWhatsappLink(waUrl);
     setIsSubmitted(true);
+
+    // Redirigir a WhatsApp en pestaña nueva
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
@@ -54,7 +76,8 @@ export const ContactForm = () => {
         servicio: '',
         detalles: ''
       });
-    }, 4000);
+      setWhatsappLink('');
+    }, 7000);
   };
 
   const selectedLabel = serviceOptions.find((opt) => opt.value === formData.servicio)?.label;
@@ -66,10 +89,20 @@ export const ContactForm = () => {
       {isSubmitted ? (
         <div className="relative z-10 py-12 sm:py-16 flex flex-col items-center justify-center text-center animate-fade-in">
           <CircleCheck size={56} className="text-[#CDFC8A] mb-4 sm:mb-6 animate-bounce" />
-          <h3 className="text-2xl sm:text-3xl font-display text-white mb-2 sm:mb-3">¡mensaje recibido!</h3>
-          <p className="text-gray-300 text-sm sm:text-base max-w-sm">
-            Gracias por contactarnos. Nos pondremos en contacto contigo en menos de 24 horas.
+          <h3 className="text-2xl sm:text-3xl font-display text-white mb-2 sm:mb-3">¡Propuesta estructurada!</h3>
+          <p className="text-gray-300 text-sm sm:text-base max-w-sm mb-6">
+            Hemos generado tu propuesta y te estamos conectando con WhatsApp...
           </p>
+          {whatsappLink && (
+            <a 
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#CDFC8A] text-[#022E21] px-6 py-3 rounded-full font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_25px_rgba(205,252,138,0.4)] hover:bg-white transition-all cursor-pointer"
+            >
+              Continuar en WhatsApp <ArrowRight size={16} className="-rotate-45" />
+            </a>
+          )}
         </div>
       ) : (
         <form className="relative z-10 space-y-6 sm:space-y-10" onSubmit={handleSubmit}>
@@ -86,7 +119,7 @@ export const ContactForm = () => {
                 value={formData.nombre}
                 onChange={handleChange}
                 className="input-clean pb-2 sm:pb-3 text-base sm:text-xl focus:border-[#CDFC8A]" 
-                placeholder="John Doe" 
+                placeholder="Tu nombre o el de tu empresa" 
               />
             </div>
             <div className="flex flex-col gap-2 sm:gap-3">
@@ -101,7 +134,7 @@ export const ContactForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className="input-clean pb-2 sm:pb-3 text-base sm:text-xl focus:border-[#CDFC8A]" 
-                placeholder="john@empresa.com" 
+                placeholder="contacto@empresa.com" 
               />
             </div>
           </div>
@@ -166,7 +199,7 @@ export const ContactForm = () => {
               value={formData.detalles}
               onChange={handleChange}
               className="input-clean pb-2 sm:pb-3 text-base sm:text-xl resize-none focus:border-[#CDFC8A]" 
-              placeholder="Cuéntanos brevemente tu objetivo..."
+              placeholder="Cuéntanos brevemente tu objetivo y alcance..."
             ></textarea>
           </div>
 
@@ -176,6 +209,10 @@ export const ContactForm = () => {
           >
             Enviar Propuesta <ArrowRight size={18} className="-rotate-45 sm:w-5 sm:h-5" />
           </button>
+
+          <p className="text-center text-xs sm:text-sm text-gray-400 font-normal">
+            Canal directo: <a href="mailto:nalcuadradocontacto@gmail.com" className="text-[#CDFC8A] hover:underline font-bold">nalcuadradocontacto@gmail.com</a>
+          </p>
         </form>
       )}
     </div>

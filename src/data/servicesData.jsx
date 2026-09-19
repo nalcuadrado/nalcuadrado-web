@@ -1,39 +1,41 @@
 import React from 'react';
-import { Globe, Smartphone, Database, Target, Search, SquarePen } from 'lucide-react';
+import { Globe, Smartphone, Database, Compass, MessageSquareQuote, Video } from 'lucide-react';
 
 export const servicesData = {
   dev: [
     {
       icon: <Globe size={32} />,
-      title: "web apps",
-      desc: "Plataformas web escalables, SaaS y landing pages ultrarrápidas construidas con React y arquitecturas modernas."
+      title: "Web Apps",
+      desc: "Plataformas web escalables, SaaS de alto rendimiento y landing pages ultrarrápidas con arquitecturas cloud modernas."
     },
     {
       icon: <Smartphone size={32} />,
-      title: "mobile apps",
-      desc: "Aplicaciones nativas e híbridas con interfaces fluidas para iOS y Android que retienen a tus usuarios."
+      title: "Mobile Apps",
+      desc: "Aplicaciones nativas e híbridas con interfaces fluidas para iOS y Android que fidelizan a tus usuarios y convierten visitas."
     },
     {
       icon: <Database size={32} />,
-      title: "custom soft",
-      desc: "Sistemas a medida, CRMs, ERPs y APIs robustas diseñadas para automatizar y optimizar tus procesos internos."
+      title: "Custom Software",
+      desc: "Sistemas a medida, CRMs, ERPs, APIs y automatización de procesos internos que optimizan y blindan la operativa de tu negocio."
     }
   ],
   mkt: [
     {
-      icon: <Target size={32} />,
-      title: "ads & perf",
-      desc: "Campañas en Meta, Google y TikTok enfocadas 100% en conversión, reducción de CPA y maximización del ROAS."
+      icon: <Compass size={32} />,
+      title: "Estrategia & Grillas",
+      desc: "Investigación de audiencia, planificación editorial estratégica y grillas mensuales de contenido para proyectar autoridad en tu sector."
     },
     {
-      icon: <Search size={32} />,
-      title: "seo & growth",
-      desc: "Auditorías técnicas, estrategias de contenido y posicionamiento orgánico para dominar los resultados de búsqueda."
+      icon: <MessageSquareQuote size={32} />,
+      title: "Social Media & Copy",
+      desc: "Community management proactivo, atención y engagement de comunidad, reportes estadísticos mensuales y guionización persuasiva que conecta y fideliza."
     },
     {
-      icon: <SquarePen size={32} />,
-      title: "branding",
-      desc: "Diseño de identidad visual, rediseño de interfaces de usuario y optimización de la tasa de conversión (CRO)."
+      icon: <Video size={32} />,
+      title: "Edición de Videos",
+      desc: "Edición profesional de video para Reels y TikToks de ritmo dinámico y narrativa visual que retiene la atención de tu público."
     }
   ]
 };
+
+export default servicesData;

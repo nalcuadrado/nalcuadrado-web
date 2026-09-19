@@ -6,11 +6,10 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Tipografías: Títulos Auria Bold (Respaldo: Abril Fatface / Syne). Forzado a minúsculas según la identidad. */
+/* Tipografías: Títulos Auria Bold (Respaldo: Abril Fatface / Syne). */
 h1, h2, h3, h4, .font-display {
   font-family: 'Auria', 'Abril Fatface', 'Syne', sans-serif;
   font-weight: bold;
-  text-transform: lowercase;
 }
 
 /* Textos y Subtítulos: Vole Semibold (Respaldo: Roboto Serif). Casing natural. */
@@ -47,6 +46,15 @@ body, p, span, div, button, input, textarea, select {
 
 .group:hover .flip-inner {
   transform: rotateY(180deg);
+}
+
+.group:hover .flip-front {
+  pointer-events: none !important;
+}
+
+.group:hover .flip-back {
+  pointer-events: auto !important;
+  z-index: 20 !important;
 }
 
 /* Ocultar el cursor predeterminado del navegador para que solo se vea el cursor personalizado */
@@ -142,3 +150,4 @@ body, p, span, div, button, input, textarea, select {
   50% { transform: scale(1.1) translate(2%, 3%); }
   100% { transform: scale(1) translate(-2%, -1%); }
 }
+

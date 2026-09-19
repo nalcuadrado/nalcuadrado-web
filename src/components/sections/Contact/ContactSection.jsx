@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, MapPin } from 'lucide-react';
+import { WhatsApp } from '../../common/SocialIcons';
 import AnimatedSection from '../../common/AnimatedSection';
 import ContactForm from './ContactForm';
 import { contactInfo } from '../../../data/navigationData';
@@ -33,23 +34,26 @@ export const ContactSection = () => {
         <AnimatedSection delay="0.1s" className="lg:col-span-5 flex flex-col justify-between">
           <div>
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-display tracking-tight leading-[0.95] text-white mb-6 sm:mb-8">
-              hagamos <br/> que <span className="text-[#CDFC8A]">suceda.</span>
+              Hagamos <br/> que <span className="text-[#CDFC8A]">suceda.</span>
             </h2>
             <p className="text-gray-300 font-normal text-base sm:text-lg md:text-xl max-w-sm mb-8 md:mb-12 leading-relaxed">
-              Ya sea un MVP, una campaña global o una auditoría técnica. Completa el formulario y hablemos.
+              Ya sea un MVP, un software a medida, una estrategia integral de redes o una auditoría técnica. Cuéntanos tu visión y la potenciaremos al cuadrado.
             </p>
           </div>
           
           <div className="flex flex-col sm:flex-row lg:flex-col gap-6 sm:gap-8 mb-8 lg:mb-0">
-            <div className="flex items-center gap-4 sm:gap-6">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-[#CDFC8A] shadow-[0_0_20px_rgba(205,252,138,0.2)]">
+            <a 
+              href={`mailto:${contactInfo.email}`} 
+              className="flex items-center gap-4 sm:gap-6 group/mail cursor-pointer transition-transform duration-300 hover:translate-x-1"
+            >
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-[#CDFC8A] group-hover/mail:border-[#CDFC8A] group-hover/mail:bg-[#CDFC8A]/10 transition-all shadow-[0_0_20px_rgba(205,252,138,0.2)]">
                 <Mail size={20} className="sm:w-6 sm:h-6" />
               </div>
               <div>
-                <p className="text-white text-base sm:text-lg font-bold">{contactInfo.email}</p>
+                <p className="text-white text-base sm:text-lg font-bold group-hover/mail:text-[#CDFC8A] transition-colors">{contactInfo.email}</p>
                 <p className="text-gray-400 text-xs sm:text-sm uppercase tracking-widest mt-0.5">Escríbenos</p>
               </div>
-            </div>
+            </a>
             
             <div className="flex items-center gap-4 sm:gap-6">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-[#CDFC8A] shadow-[0_0_20px_rgba(205,252,138,0.2)]">
@@ -60,6 +64,21 @@ export const ContactSection = () => {
                 <p className="text-gray-400 text-xs sm:text-sm uppercase tracking-widest mt-0.5">{contactInfo.locationDetail}</p>
               </div>
             </div>
+
+            <a 
+              href={contactInfo.whatsappUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-4 sm:gap-6 group/wa cursor-pointer transition-transform duration-300 hover:translate-x-1"
+            >
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-[#CDFC8A] group-hover/wa:border-[#CDFC8A] group-hover/wa:bg-[#CDFC8A]/10 transition-all shadow-[0_0_20px_rgba(205,252,138,0.2)]">
+                <WhatsApp size={22} className="sm:w-6 sm:h-6" />
+              </div>
+              <div>
+                <p className="text-white text-base sm:text-lg font-bold group-hover/wa:text-[#CDFC8A] transition-colors">{contactInfo.whatsapp}</p>
+                <p className="text-gray-400 text-xs sm:text-sm uppercase tracking-widest mt-0.5">WhatsApp Directo</p>
+              </div>
+            </a>
           </div>
         </AnimatedSection>
 
