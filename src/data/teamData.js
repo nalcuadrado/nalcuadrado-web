@@ -29,7 +29,7 @@ export const teamData = [
     glowColor: 'rgba(60,24,60,0.5)',
     shadowGlow: 'rgba(60,24,60,0.65)',
     bulletColor: '#CDFC8A',
-    bio: 'Especialista en estrategia de contenidos, narrativa visual y psicología del consumidor. Nicky convierte comunidades en clientes y marcas en referentes del sector.',
+    bio: 'Especialista en estrategia de contenidos, narrativa visual y neuromarketing Nicky convierte comunidades en clientes y marcas en referentes del sector.',
     skills: ['Social Media & Grillas', 'Community & Guionización', 'Edición de Videos'],
     socials: {
       linkedin: 'https://www.linkedin.com/in/nicmery-evans-3b79a7436/',

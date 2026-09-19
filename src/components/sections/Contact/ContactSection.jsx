@@ -37,7 +37,7 @@ export const ContactSection = () => {
               Hagamos <br/> que <span className="text-[#CDFC8A]">suceda.</span>
             </h2>
             <p className="text-gray-300 font-normal text-base sm:text-lg md:text-xl max-w-sm mb-8 md:mb-12 leading-relaxed">
-              Ya sea un MVP, un software a medida, una estrategia integral de redes o una auditoría técnica. Cuéntanos tu visión y la potenciaremos al cuadrado.
+              Ya sea un MVP, un software a medida o una estrategia integral de redes. Cuéntanos tu visión y la potenciaremos al cuadrado.
             </p>
           </div>
           

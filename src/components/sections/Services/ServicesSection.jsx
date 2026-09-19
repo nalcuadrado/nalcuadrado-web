@@ -73,11 +73,6 @@ export const ServicesSection = () => {
           ))}
         </div>
 
-        {/* Nota de servicio oficial */}
-        <p className="text-center text-xs sm:text-sm text-gray-400 mt-8 sm:mt-12 font-normal">
-          * Nota de servicio: La creación de flyers y carruseles se ofrece como servicio aparte.
-        </p>
-
       </div>
     </section>
   );
