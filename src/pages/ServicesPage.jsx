@@ -14,6 +14,7 @@ import {
 export const ServicesPage = () => {
   const [activeTab, setActiveTab] = useState('marketing');
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isDesktop, setIsDesktop] = useState(false);
   const isInitialMount = useRef(true);
 
   const pageRef = useRef(null);
@@ -25,48 +26,61 @@ export const ServicesPage = () => {
 
   const currentPackages = activeTab === 'software' ? softwarePackages : marketingPackages;
 
-  // Animación de entrada estilo Hero con GSAP
+  // Detección de dispositivo para optimizar animaciones
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
-      tl.from(titleRef.current, {
-        y: 80,
-        opacity: 0,
-        scale: 0.94,
-        duration: 1.1,
-        delay: 0.15
-      })
-      .from(subtitleRef.current, {
-        y: 30,
-        opacity: 0,
-        duration: 0.8
-      }, '-=0.7')
-      .from(tabsRef.current, {
-        scale: 0.7,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'back.out(1.8)'
-      }, '-=0.5')
-      .from(cardsRef.current?.children || [], {
-        y: 60,
-        opacity: 0,
-        scale: 0.9,
-        stagger: 0.12,
-        duration: 1,
-        ease: 'back.out(1.5)'
-      }, '-=0.4')
-      .from(noteRef.current, {
-        y: 25,
-        opacity: 0,
-        duration: 0.8
-      }, '-=0.4');
+  // Animación de entrada GSAP optimizada: tarjetas visibles inmediatamente en mobile
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      tl.fromTo(titleRef.current, 
+        { y: isMobile ? 25 : 50, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: isMobile ? 0.5 : 0.8 }
+      )
+      .fromTo(subtitleRef.current, 
+        { y: isMobile ? 15 : 25, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: isMobile ? 0.4 : 0.6 }, 
+        '-=0.3'
+      )
+      .fromTo(tabsRef.current, 
+        { scale: 0.9, opacity: 0 }, 
+        { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.5)' }, 
+        '-=0.3'
+      );
+
+      // En desktop animamos suavemente las tarjetas; en mobile se muestran al instante sin delay
+      if (!isMobile && cardsRef.current?.children) {
+        tl.fromTo(cardsRef.current.children, 
+          { y: 30, opacity: 0 }, 
+          { y: 0, opacity: 1, stagger: 0.08, duration: 0.5, clearProps: 'all' }, 
+          '-=0.2'
+        );
+      } else if (cardsRef.current?.children) {
+        // En mobile aseguramos 100% de visibilidad inmediata
+        gsap.set(cardsRef.current.children, { opacity: 1, y: 0, clearProps: 'all' });
+      }
+
+      if (noteRef.current) {
+        tl.fromTo(noteRef.current, 
+          { opacity: 0, y: 15 }, 
+          { opacity: 1, y: 0, duration: 0.4, clearProps: 'all' }, 
+          '-=0.2'
+        );
+      }
     }, pageRef);
 
     return () => ctx.revert();
   }, []);
 
-  // Animación al alternar pestañas
+  // Micro-animación al alternar pestañas
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
@@ -75,24 +89,24 @@ export const ServicesPage = () => {
 
     if (cardsRef.current?.children) {
       gsap.fromTo(cardsRef.current.children,
-        { y: 35, opacity: 0, scale: 0.94 },
-        { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.6, ease: 'power3.out' }
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, stagger: 0.06, duration: 0.35, ease: 'power2.out', clearProps: 'all' }
       );
     }
     if (noteRef.current) {
       gsap.fromTo(noteRef.current,
-        { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out', clearProps: 'all' }
       );
     }
   }, [activeTab]);
 
-  // Efecto Parallax interactivo con el cursor (idéntico al Hero)
+  // Parallax interactivo exclusivo para Desktop
   const handleMouseMove = (e) => {
-    if (!pageRef.current) return;
+    if (!isDesktop || !pageRef.current) return;
     const { innerWidth, innerHeight } = window;
-    const x = (e.clientX / innerWidth - 0.5) * 40; 
-    const y = (e.clientY / innerHeight - 0.5) * 40;
+    const x = (e.clientX / innerWidth - 0.5) * 30; 
+    const y = (e.clientY / innerHeight - 0.5) * 30;
     setMousePos({ x, y });
   };
 
@@ -105,16 +119,16 @@ export const ServicesPage = () => {
       ref={pageRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="min-h-screen bg-[#050505] text-white font-sans selection:bg-[#D4FF78] selection:text-[#0A0A0A] relative flex flex-col items-center pt-28 sm:pt-32 md:pt-40 pb-20 overflow-hidden perspective-1000"
+      className="min-h-screen bg-[#050505] text-white font-sans selection:bg-[#D4FF78] selection:text-[#0A0A0A] relative flex flex-col items-center pt-28 sm:pt-32 md:pt-40 pb-20 overflow-hidden"
     >
-      {/* Fondo Degradado Estilo Aurora Vibrante (idéntico al Hero) */}
+      {/* Fondo Aurora Dinámico */}
       <div className="hero-aurora"></div>
 
-      {/* Luces y texturas ambientales complementarias */}
+      {/* Luces y texturas ambientales de fondo */}
       <div className="absolute top-0 left-0 w-full h-[700px] bg-gradient-to-br from-[#2A0F2E]/30 via-transparent to-[#051409]/40 pointer-events-none z-0"></div>
       <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#D4FF78] rounded-full blur-[250px] opacity-[0.09] pointer-events-none z-0"></div>
 
-      {/* Elementos gráficos decorativos estilo Neo-brutalista (Hero Decorations) */}
+      {/* Elementos gráficos decorativos estilo Neo-brutalista */}
       <svg 
         className="absolute top-[14%] left-[4%] sm:left-[8%] animate-spin-slow opacity-80 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 pointer-events-none z-10" 
         viewBox="0 0 100 100" 
@@ -146,10 +160,10 @@ export const ServicesPage = () => {
       {/* Contenedor Principal */}
       <div className="w-full flex flex-col items-center px-4 sm:px-8 relative z-20">
         
-        {/* Cabecera de la página con Parallax suave */}
+        {/* Cabecera de la página */}
         <div 
           className="text-center mb-10 sm:mb-14 relative w-full max-w-4xl flex flex-col items-center transition-transform duration-300 ease-out"
-          style={{ transform: `translate3d(${mousePos.x * 0.12}px, ${mousePos.y * 0.12}px, 0px)` }}
+          style={isDesktop ? { transform: `translate3d(${mousePos.x * 0.12}px, ${mousePos.y * 0.12}px, 0px)` } : undefined}
         >
           <h1 
             ref={titleRef} 
@@ -165,11 +179,11 @@ export const ServicesPage = () => {
             Planes estratégicos diseñados para impulsar tu negocio con ingeniería de software y marketing de alto impacto.
           </p>
 
-          {/* Selector de Pestañas (Pills) con efecto 3D */}
+          {/* Selector de Pestañas (Pills) */}
           <div 
             ref={tabsRef}
-            className="inline-flex bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-1.5 shadow-2xl transition-transform duration-500"
-            style={{ transform: `translate3d(${mousePos.x * 0.2}px, ${mousePos.y * 0.2}px, 15px)` }}
+            className="inline-flex bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-1.5 shadow-2xl transition-transform duration-300"
+            style={isDesktop ? { transform: `translate3d(${mousePos.x * 0.15}px, ${mousePos.y * 0.15}px, 0px)` } : undefined}
           >
             <button
               onClick={() => setActiveTab('marketing')}
@@ -194,11 +208,11 @@ export const ServicesPage = () => {
           </div>
         </div>
 
-        {/* Cuadrícula de Tarjetas con Parallax 3D */}
+        {/* Cuadrícula de Tarjetas: Siempre 100% visible sin retrasos ni parpadeos */}
         <div 
           ref={cardsRef}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full max-w-7xl z-20 transition-transform duration-500 ease-out"
-          style={{ transform: `translate3d(${mousePos.x * 0.3}px, ${mousePos.y * 0.3}px, 25px)` }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full max-w-7xl z-20"
+          style={isDesktop ? { transform: `translate3d(${mousePos.x * 0.2}px, ${mousePos.y * 0.2}px, 0px)` } : undefined}
         >
           {currentPackages.map((pkg) => {
             const waUrl = getPackageWhatsAppUrl(pkg, activeTab);
