@@ -64,14 +64,13 @@ export const marketingPackages = [
     subtitle: "Presencia Activa",
     icon: <Rocket className="w-6 h-6" />,
     features: [
-      "4 posts semanales: 1 video semanal, 2 carruseles y 1 post de tendencia semanal.",
-      "Respuesta a comunidad diaria.",
-      "Una historia diaria.",
+      "3 posts semanales: 1 video semanal, 1 carrusel y 1 post de tendencia semanal.",
+      "1 historia interdiaria.",
       "Estrategia de contenido mensual.",
       "Grilla de contenido mensual.",
       "Redacción de copies y optimización de la cuenta."
     ],
-    price: "Ref 120"
+    price: "Ref 150"
   },
   {
     id: "mark-2",
@@ -79,16 +78,17 @@ export const marketingPackages = [
     subtitle: "Expansión Sólida",
     icon: <TrendingUp className="w-6 h-6" />,
     features: [
-      "8 posts semanales: 4 videos, 3 carruseles y 1 post de tendencia semanal.",
-      "2 historias diarias.",
-      "Respuesta a comunidad diaria.",
+      "2 videos semanales.",
+      "1 carrusel semanal + 1 carrusel adicional al mes.",
+      "1 post de tendencia semanal.",
+      "1 historia diaria.",
       "Estrategia de contenido mensual.",
       "Grilla de contenido mensual.",
       "Reporte estadístico mensual.",
       "Redacción de copies y optimización de la cuenta.",
       "1 campaña de ads mensual."
     ],
-    price: "Ref 200"
+    price: "Ref 280"
   },
   {
     id: "mark-3",
@@ -96,16 +96,17 @@ export const marketingPackages = [
     subtitle: "Dominio Total del Nicho",
     icon: <Zap className="w-6 h-6" />,
     features: [
-      "10 posts semanales: 5 videos, 3 carruseles y 2 posts de tendencia semanales.",
-      "3 historias diarias.",
-      "Respuesta a comunidad diaria.",
+      "4 videos semanales.",
+      "2 carruseles semanales.",
+      "1 post de tendencia semanal.",
+      "2 historias diarias.",
       "Estrategia de contenido mensual.",
       "Grilla de contenido mensual.",
       "Reporte estadístico mensual.",
       "Redacción de copies y optimización de la cuenta.",
       "2 campañas de ads mensual."
     ],
-    price: "Ref 300"
+    price: "Ref 350"
   }
 ];
 
