@@ -1,9 +1,25 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Instagram, TikTok, WhatsApp } from '../common/SocialIcons';
 import { footerLinks, contactInfo } from '../../data/navigationData';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleFooterNav = (e, href) => {
+    e.preventDefault();
+    const id = href.replace('#', '').replace('/', '');
+    if (location.pathname !== '/') {
+      navigate(`/#${id}`);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   const socialIcons = [
     { icon: <Instagram size={22} />, link: 'https://www.instagram.com/nalcuadrado.ve/', label: 'Instagram' },
@@ -36,7 +52,11 @@ export const Footer = () => {
             <ul className="space-y-3 sm:space-y-4 text-sm sm:text-base font-bold text-[#022E21]/75 uppercase">
               {footerLinks.map((item, idx) => (
                 <li key={idx}>
-                  <a href={item.href} className="hover:text-[#3C183C] transition-colors">
+                  <a 
+                    href={item.href} 
+                    onClick={(e) => handleFooterNav(e, item.href)}
+                    className="hover:text-[#3C183C] transition-colors cursor-pointer"
+                  >
                     {item.label}
                   </a>
                 </li>

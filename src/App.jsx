@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import useScrollPosition from './hooks/useScrollPosition';
 import BackgroundGlows from './components/common/BackgroundGlows';
 import CustomCursor from './components/common/CustomCursor';
+import ScrollToTop from './components/common/ScrollToTop';
 import Navbar from './components/layout/Navbar';
-import HeroSection from './components/sections/Hero/HeroSection';
-import ServicesSection from './components/sections/Services/ServicesSection';
-import TeamSection from './components/sections/Team/TeamSection';
-import VisionSection from './components/sections/Vision/VisionSection';
-import ContactSection from './components/sections/Contact/ContactSection';
 import Footer from './components/layout/Footer';
+import LandingPage from './pages/LandingPage';
+import ServicesPage from './pages/ServicesPage';
 
-export default function App() {
+function AppContent() {
   const isScrolled = useScrollPosition(20);
 
   const scrollTo = (id) => {
@@ -23,26 +22,35 @@ export default function App() {
 
   return (
     <div className="text-[#F4F4F5] bg-[#050505] min-h-screen relative overflow-x-hidden selection:bg-[#CDFC8A] selection:text-[#022E21]">
-      {/* Puntero personalizado interactivo (anillo verde con punto negro) */}
+      {/* Puntero personalizado interactivo */}
       <CustomCursor />
 
       {/* Luces y texturas ambientales de fondo */}
       <BackgroundGlows />
 
+      {/* Restauración automática de scroll al cambiar de ruta */}
+      <ScrollToTop />
+
       {/* Navegación flotante superior */}
       <Navbar isScrolled={isScrolled} scrollTo={scrollTo} />
 
-      {/* Contenido principal dividido en secciones modulares */}
-      <main className="relative z-10 flex flex-col">
-        <HeroSection scrollTo={scrollTo} />
-        <ServicesSection />
-        <TeamSection />
-        <VisionSection />
-        <ContactSection />
-      </main>
+      {/* Enrutador principal de vistas */}
+      <Routes>
+        <Route path="/" element={<LandingPage scrollTo={scrollTo} />} />
+        <Route path="/servicios" element={<ServicesPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
 
       {/* Pie de página neo-brutalista curvo */}
       <Footer />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }

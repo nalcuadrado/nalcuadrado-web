@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import HeroDecorations from './HeroDecorations';
@@ -6,6 +7,7 @@ import FloatingPill from './FloatingPill';
 
 export const HeroSection = ({ scrollTo }) => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const navigate = useNavigate();
   const heroRef = useRef(null);
   const title1Ref = useRef(null);
   const badgeRef = useRef(null);
@@ -110,10 +112,10 @@ export const HeroSection = ({ scrollTo }) => {
             style={{ transform: `translate3d(${mousePos.x * 0.8}px, ${mousePos.y * 0.8}px, 60px)` }}
           >
             <button 
-              onClick={() => scrollTo('contacto')} 
+              onClick={() => navigate('/servicios')} 
               className="w-full sm:w-auto max-w-xs sm:max-w-none justify-center bg-[#CDFC8A] text-[#022E21] px-7 sm:px-10 py-3.5 sm:py-5 rounded-full font-bold uppercase tracking-widest text-sm sm:text-lg hover:bg-white transition-colors shadow-[0_0_50px_rgba(205,252,138,0.45)] flex items-center gap-3 cursor-pointer"
             >
-              Comenzar Ahora <ArrowRight size={18} className="-rotate-45 sm:w-5 sm:h-5" />
+              Conoce nuestros servicios <ArrowRight size={18} className="-rotate-45 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>

@@ -1,13 +1,29 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { navLinks } from '../../data/navigationData';
 
 export const Navbar = ({ isScrolled, scrollTo }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavClick = (id) => {
     setMobileMenuOpen(false);
-    scrollTo(id);
+    if (location.pathname !== '/') {
+      navigate(`/#${id}`);
+    } else {
+      scrollTo(id);
+    }
+  };
+
+  const handleServicesClick = () => {
+    setMobileMenuOpen(false);
+    if (location.pathname !== '/servicios') {
+      navigate('/servicios');
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -38,7 +54,7 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
               <button 
                 key={item.id} 
                 onClick={() => handleNavClick(item.id)} 
-                className="relative group px-1 py-1 text-xs lg:text-sm font-bold text-gray-300 uppercase tracking-widest transition-colors duration-300 hover:text-white"
+                className="relative group px-1 py-1 text-xs lg:text-sm font-bold text-gray-300 uppercase tracking-widest transition-colors duration-300 hover:text-white cursor-pointer"
               >
                 {item.label}
                 <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#CDFC8A] transition-all duration-300 group-hover:w-full"></span>
@@ -46,13 +62,13 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
             ))}
           </div>
 
-          {/* Desktop CTA Button más fino y estilizado con Dark Purple y Soft Lavender */}
+          {/* Desktop CTA Button anclado a la nueva página de Servicios */}
           <div className="hidden md:block z-10">
             <button 
-              onClick={() => handleNavClick('contacto')} 
-              className="bg-[#3C183C] text-[#D2CBFE] hover:text-white px-6 py-2.5 md:py-3 rounded-full hover:bg-[#522252] border border-[#D2CBFE]/30 hover:border-[#D2CBFE]/60 transition-all text-xs md:text-sm font-bold uppercase tracking-widest flex items-center gap-2 shadow-[0_0_20px_rgba(60,24,60,0.6)] hover:shadow-[0_0_25px_rgba(210,203,254,0.35)]"
+              onClick={handleServicesClick} 
+              className="bg-[#3C183C] text-[#D2CBFE] hover:text-white px-6 py-2.5 md:py-3 rounded-full hover:bg-[#522252] border border-[#D2CBFE]/30 hover:border-[#D2CBFE]/60 transition-all text-xs md:text-sm font-bold uppercase tracking-widest flex items-center gap-2 shadow-[0_0_20px_rgba(60,24,60,0.6)] hover:shadow-[0_0_25px_rgba(210,203,254,0.35)] cursor-pointer"
             >
-              Iniciar Proyecto <ArrowRight size={14} className="-rotate-45" />
+              Nuestros Servicios <ArrowRight size={14} className="-rotate-45" />
             </button>
           </div>
 
@@ -73,17 +89,17 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
               <button 
                 key={item.id} 
                 onClick={() => handleNavClick(item.id)} 
-                className="text-left px-4 py-3 rounded-2xl hover:bg-white/10 text-gray-200 hover:text-white font-bold text-sm uppercase tracking-widest transition-all"
+                className="text-left px-4 py-3 rounded-2xl hover:bg-white/10 text-gray-200 hover:text-white font-bold text-sm uppercase tracking-widest transition-all cursor-pointer"
               >
                 {item.label}
               </button>
             ))}
             <div className="h-[1px] w-full bg-white/10 my-2"></div>
             <button 
-              onClick={() => handleNavClick('contacto')} 
-              className="w-full text-center px-4 py-3.5 rounded-2xl bg-[#CDFC8A] text-[#022E21] font-bold text-sm uppercase tracking-widest shadow-lg flex items-center justify-center gap-2"
+              onClick={handleServicesClick} 
+              className="w-full text-center px-4 py-3.5 rounded-2xl bg-[#CDFC8A] text-[#022E21] font-bold text-sm uppercase tracking-widest shadow-lg flex items-center justify-center gap-2 cursor-pointer"
             >
-              Iniciar Proyecto <ArrowRight size={16} className="-rotate-45" />
+              Nuestros Servicios <ArrowRight size={16} className="-rotate-45" />
             </button>
           </div>
         )}
