@@ -208,10 +208,10 @@ export const ServicesPage = () => {
           </div>
         </div>
 
-        {/* Cuadrícula de Tarjetas: Siempre 100% visible sin retrasos ni parpadeos */}
+        {/* Cuadrícula de Tarjetas: Adaptada para móvil, tablet e intermedias */}
         <div 
           ref={cardsRef}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full max-w-7xl z-20"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full max-w-7xl z-20"
           style={isDesktop ? { transform: `translate3d(${mousePos.x * 0.2}px, ${mousePos.y * 0.2}px, 0px)` } : undefined}
         >
           {currentPackages.map((pkg) => {

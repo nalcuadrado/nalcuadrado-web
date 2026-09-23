@@ -29,32 +29,34 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'top-2 md:top-3' : 'top-4 md:top-6'}`}>
       <div className="container mx-auto px-4 md:px-10">
-        {/* Header principal estilizado y más fino con centrado absoluto de enlaces */}
+        {/* Header principal con 3 secciones simétricas (Izquierda, Centro perfectamente medido, Derecha) */}
         <div className="relative flex justify-between items-center transition-all duration-300 bg-[#121212]/85 backdrop-blur-xl shadow-2xl px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 rounded-full border border-white/10">
           
-          {/* Logo Oficial n² en formato .svg sin fondo y más grande */}
-          <div 
-            className="flex items-center z-10 cursor-pointer group"
-            onClick={() => handleNavClick('inicio')}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => e.key === 'Enter' && handleNavClick('inicio')}
-            aria-label="Ir al inicio de N²"
-          >
-            <img 
-              src="/IMAGOTIPO.png" 
-              alt="Logo N²" 
-              className="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-            />
+          {/* 1. Logo (Extremo Izquierdo) */}
+          <div className="flex items-center justify-start flex-1 z-10">
+            <div 
+              className="flex items-center cursor-pointer group shrink-0"
+              onClick={() => handleNavClick('inicio')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleNavClick('inicio')}
+              aria-label="Ir al inicio de N²"
+            >
+              <img 
+                src="/IMAGOTIPO.png" 
+                alt="Logo N²" 
+                className="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
           </div>
           
-          {/* Desktop Menu - Enlaces perfectamente centrados en su totalidad */}
-          <div className="hidden md:flex items-center justify-center gap-6 lg:gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+          {/* 2. Desktop Menu - Absolutamente Centrado en el Medio del Navbar */}
+          <div className="hidden xl:flex items-center justify-center gap-3 2xl:gap-8 absolute inset-x-0 mx-auto w-fit z-10 pointer-events-auto">
             {navLinks.map((item) => (
               <button 
                 key={item.id} 
                 onClick={() => handleNavClick(item.id)} 
-                className="relative group px-1 py-1 text-xs lg:text-sm font-bold text-gray-300 uppercase tracking-widest transition-colors duration-300 hover:text-white cursor-pointer"
+                className="relative group px-1 py-1 text-xs 2xl:text-sm font-bold text-gray-300 uppercase tracking-wider 2xl:tracking-widest transition-colors duration-300 hover:text-white cursor-pointer whitespace-nowrap"
               >
                 {item.label}
                 <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#CDFC8A] transition-all duration-300 group-hover:w-full"></span>
@@ -62,29 +64,32 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
             ))}
           </div>
 
-          {/* Desktop CTA Button anclado a la nueva página de Servicios */}
-          <div className="hidden md:block z-10">
+          {/* 3. Botón / Menú Hamburguesa (Extremo Derecho) */}
+          <div className="flex items-center justify-end flex-1 z-10">
+            {/* Desktop CTA Button */}
+            <div className="hidden xl:block shrink-0">
+              <button 
+                onClick={handleServicesClick} 
+                className="bg-[#3C183C] text-[#D2CBFE] hover:text-white px-3.5 2xl:px-6 py-2 2xl:py-3 rounded-full hover:bg-[#522252] border border-[#D2CBFE]/30 hover:border-[#D2CBFE]/60 transition-all text-[11px] 2xl:text-sm font-bold uppercase tracking-wider 2xl:tracking-widest flex items-center gap-1.5 2xl:gap-2 shadow-[0_0_20px_rgba(60,24,60,0.6)] hover:shadow-[0_0_25px_rgba(210,203,254,0.35)] cursor-pointer whitespace-nowrap"
+              >
+                Nuestros Servicios <ArrowRight size={14} className="-rotate-45" />
+              </button>
+            </div>
+
+            {/* Mobile Menu Toggle Button */}
             <button 
-              onClick={handleServicesClick} 
-              className="bg-[#3C183C] text-[#D2CBFE] hover:text-white px-6 py-2.5 md:py-3 rounded-full hover:bg-[#522252] border border-[#D2CBFE]/30 hover:border-[#D2CBFE]/60 transition-all text-xs md:text-sm font-bold uppercase tracking-widest flex items-center gap-2 shadow-[0_0_20px_rgba(60,24,60,0.6)] hover:shadow-[0_0_25px_rgba(210,203,254,0.35)] cursor-pointer"
+              className="xl:hidden text-white p-1.5 focus:outline-none shrink-0" 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Abrir menú"
             >
-              Nuestros Servicios <ArrowRight size={14} className="-rotate-45" />
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
-
-          {/* Mobile Menu Toggle Button */}
-          <button 
-            className="md:hidden text-white p-1.5 focus:outline-none z-10" 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Abrir menú"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
 
         {/* Mobile Dropdown Sólido y de Alta Legibilidad */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-3 bg-[#121212]/95 backdrop-blur-2xl rounded-3xl p-4 sm:p-5 flex flex-col space-y-1.5 border border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.9)] relative z-50 animate-fade-in">
+          <div className="xl:hidden mt-3 bg-[#121212]/95 backdrop-blur-2xl rounded-3xl p-4 sm:p-5 flex flex-col space-y-1.5 border border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.9)] relative z-50 animate-fade-in">
             {navLinks.map((item) => (
               <button 
                 key={item.id} 
