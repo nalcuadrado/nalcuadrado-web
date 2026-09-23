@@ -28,7 +28,7 @@ export const ClientProposalPage = () => {
 
   return (
     <div
-      className="min-h-screen py-6 sm:py-8 lg:py-0 lg:h-screen w-full flex flex-col justify-start lg:justify-center items-center px-3 sm:px-6 lg:px-8 lg:overflow-hidden font-['Outfit',sans-serif] bg-[#2D1B4E] text-[#2D1B4E] selection:bg-[#F72585] selection:text-white"
+      className="min-h-screen py-6 sm:py-8 lg:py-12 w-full flex flex-col justify-start lg:justify-center items-center px-3 sm:px-6 lg:px-8 font-['Outfit',sans-serif] bg-[#2D1B4E] text-[#2D1B4E] selection:bg-[#F72585] selection:text-white relative"
       style={{
         backgroundImage: 'radial-gradient(circle at 100% 150%, #F72585 24%, transparent 24%, transparent 28%, #F72585 28%, transparent 29%, transparent 33%, #F72585 33%, transparent 34%, transparent 38%, #F72585 38%, transparent 39%, transparent 43%, #F72585 43%, transparent 44%, transparent 48%, #F72585 48%, transparent 49%, transparent 53%, #F72585 53%, transparent 54%, transparent 58%, #F72585 58%, transparent 59%, transparent 63%, #F72585 63%, transparent 64%, transparent 68%, #F72585 68%, transparent 69%, transparent 73%, #F72585 73%, transparent 74%, transparent 78%, #F72585 78%, transparent 79%, transparent 83%, #F72585 83%, transparent 84%, transparent 88%, #F72585 88%, transparent 89%, transparent 93%, #F72585 93%, transparent 94%, transparent 98%, #F72585 98%, transparent 99%, transparent 100%)',
         backgroundSize: '150px 150px',
@@ -37,7 +37,7 @@ export const ClientProposalPage = () => {
       }}
     >
       {/* Contenedor Carpeta (Folder Container) */}
-      <div className="w-full max-w-[1200px] min-h-0 lg:h-[88vh] lg:max-h-[850px] relative flex flex-col drop-shadow-[0_15px_35px_rgba(0,0,0,0.35)] lg:drop-shadow-[0_25px_50px_rgba(0,0,0,0.45)] my-auto transition-all duration-300">
+      <div className="w-full max-w-[1200px] min-h-0 relative flex flex-col drop-shadow-[0_15px_35px_rgba(0,0,0,0.35)] lg:drop-shadow-[0_25px_50px_rgba(0,0,0,0.45)] my-auto transition-all duration-300">
         
         {/* Pestañas de la Carpeta (Tabs Adaptativas - Sin Recortes) */}
         <div className="w-full grid grid-cols-4 gap-1 sm:gap-2 px-1 sm:px-3 z-10 select-none pt-2 -mt-2 pb-1" role="tablist">
@@ -88,12 +88,12 @@ export const ClientProposalPage = () => {
 
         {/* Cuerpo Principal de la Carpeta (Folder Body) */}
         <div
-          className="flex-grow rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-9 relative z-10 overflow-hidden shadow-[inset_0_0_40px_rgba(0,0,0,0.02)] transition-colors duration-500 min-h-0 lg:min-h-[550px] flex flex-col justify-between"
+          className="flex-grow rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-9 relative z-10 overflow-hidden shadow-[inset_0_0_40px_rgba(0,0,0,0.02)] transition-colors duration-500 min-h-0 flex flex-col justify-between"
           style={{ backgroundColor: tabBgColors[activeTab] || '#FDFBF7' }}
         >
           {/* TAB 1: PORTADA EDITORIAL */}
           {activeTab === 'intro' && (
-            <div className="relative h-full flex flex-col justify-between animate-[fadeIn_0.4s_ease-out]">
+            <div className="relative flex-grow flex flex-col justify-between animate-[fadeIn_0.4s_ease-out]">
               {/* Formas decorativas estilo scrapbook (confinadas limpiamente al contenedor) */}
               <div className="absolute top-0 right-0 w-36 h-36 md:w-64 md:h-64 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] bg-[#F72585] opacity-15 pointer-events-none animate-pulse" />
               <div
@@ -111,7 +111,7 @@ export const ClientProposalPage = () => {
                 }}
               />
 
-              <div className="relative z-10 flex flex-col lg:flex-row h-full items-center justify-between gap-6 sm:gap-8 py-2 md:py-4">
+              <div className="relative z-10 flex flex-col lg:flex-row flex-grow items-center justify-between gap-6 sm:gap-8 py-2 md:py-4">
                 {/* Textos Principales */}
                 <div className="w-full lg:w-6/12 xl:w-7/12 lg:pr-2 xl:pr-4 flex flex-col justify-center">
                   <div className="inline-block px-3.5 py-1 rounded-full bg-purple-100 text-purple-800 font-bold text-xs sm:text-sm tracking-widest mb-3 sm:mb-5 border border-purple-200 self-start">
@@ -136,14 +136,17 @@ export const ClientProposalPage = () => {
                     {data.description}
                   </p>
 
-                  <div className="mt-4 sm:mt-6 md:mt-8 pt-3 flex items-center gap-3 text-xs md:text-sm font-bold text-gray-400">
+                  {/* Logo N² y año perfectamente alineados a la línea base */}
+                  <div className="mt-4 sm:mt-6 md:mt-8 pt-3 flex items-end gap-2.5 sm:gap-3 text-xs md:text-sm font-bold text-gray-400">
                     <img
                       src="/ISOTIPO.svg"
                       alt="Logo N²"
-                      className="h-6 sm:h-8 md:h-9 w-auto object-contain transition-transform duration-300 hover:scale-105"
+                      className="h-7 sm:h-8 md:h-9 w-auto object-contain transition-transform duration-300 hover:scale-105"
                     />
-                    <div className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
-                    <span className="text-gray-500 font-semibold">{data.year}</span>
+                    <div className="flex items-center gap-2 sm:gap-2.5 pb-0.5 sm:pb-1">
+                      <div className="w-1.5 h-1.5 bg-gray-400 rounded-full shrink-0" />
+                      <span className="text-gray-500 font-semibold tracking-wide leading-none">{data.year}</span>
+                    </div>
                   </div>
 
                   {/* Botón CTA rápido para móviles y tablets */}
@@ -195,7 +198,7 @@ export const ClientProposalPage = () => {
 
           {/* TAB 2: PLAN 1 (Brote) */}
           {activeTab === 'plan1' && (
-            <div className="h-full flex flex-col animate-[fadeIn_0.4s_ease-out]">
+            <div className="flex-grow flex flex-col animate-[fadeIn_0.4s_ease-out]">
               <div className="flex items-center mb-4 sm:mb-6 shrink-0">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-green-100 flex items-center justify-center text-green-600 text-xl sm:text-3xl shadow-sm mr-3 sm:mr-4 shrink-0">
                   <i className="fa-solid fa-seedling" />
@@ -213,9 +216,9 @@ export const ClientProposalPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col lg:flex-row gap-5 sm:gap-6 lg:gap-8 flex-grow lg:overflow-hidden pb-2 lg:pb-4">
+              <div className="flex flex-col lg:flex-row gap-5 sm:gap-6 lg:gap-8 flex-grow pb-2 lg:pb-4">
                 {/* Entregables */}
-                <div className="w-full lg:w-7/12 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] lg:h-full lg:overflow-y-auto pr-3 sm:pr-4 border border-green-50">
+                <div className="w-full lg:w-7/12 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] pr-3 sm:pr-4 border border-green-50">
                   <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-3 sm:mb-4 text-[#2D1B4E] border-b pb-2 flex justify-between items-center">
                     ¿Qué incluye?
                   </h3>
@@ -278,7 +281,7 @@ export const ClientProposalPage = () => {
 
           {/* TAB 3: PLAN 2 (Expansión - DESTACADO) */}
           {activeTab === 'plan2' && (
-            <div className="h-full flex flex-col animate-[fadeIn_0.4s_ease-out]">
+            <div className="flex-grow flex flex-col animate-[fadeIn_0.4s_ease-out]">
               <div className="flex items-center justify-between mb-4 sm:mb-6 shrink-0">
                 <div className="flex items-center">
                   <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-[#F72585] flex items-center justify-center text-white text-xl sm:text-3xl shadow-lg shadow-pink-200 mr-3 sm:mr-4 shrink-0">
@@ -308,9 +311,9 @@ export const ClientProposalPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col lg:flex-row gap-5 sm:gap-6 lg:gap-8 flex-grow lg:overflow-hidden pb-2 lg:pb-4">
+              <div className="flex flex-col lg:flex-row gap-5 sm:gap-6 lg:gap-8 flex-grow pb-2 lg:pb-4">
                 {/* Entregables (Plan Destacado con acento fucsia) */}
-                <div className="w-full lg:w-7/12 bg-gradient-to-b from-white to-[#FFF5F9] rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 shadow-[0_15px_40px_rgba(247,37,133,0.12)] lg:h-full lg:overflow-y-auto pr-3 sm:pr-4 border-2 border-[#F72585] scale-[1.005]">
+                <div className="w-full lg:w-7/12 bg-gradient-to-b from-white to-[#FFF5F9] rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 shadow-[0_15px_40px_rgba(247,37,133,0.12)] pr-3 sm:pr-4 border-2 border-[#F72585] scale-[1.005]">
                   <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-3 sm:mb-4 text-[#2D1B4E] border-b border-pink-100 pb-2 flex justify-between items-center">
                     ¿Qué incluye?
                   </h3>
@@ -400,7 +403,7 @@ export const ClientProposalPage = () => {
 
           {/* TAB 4: PLAN 3 (Dosel - ACTUALIZADO A $750) */}
           {activeTab === 'plan3' && (
-            <div className="h-full flex flex-col animate-[fadeIn_0.4s_ease-out]">
+            <div className="flex-grow flex flex-col animate-[fadeIn_0.4s_ease-out]">
               <div className="flex items-center mb-4 sm:mb-6 shrink-0">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-purple-100 flex items-center justify-center text-purple-700 text-xl sm:text-3xl shadow-sm mr-3 sm:mr-4 border border-purple-200 shrink-0">
                   <i className="fa-solid fa-crown" />
@@ -418,9 +421,9 @@ export const ClientProposalPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col lg:flex-row gap-5 sm:gap-6 lg:gap-8 flex-grow lg:overflow-hidden pb-2 lg:pb-4">
+              <div className="flex flex-col lg:flex-row gap-5 sm:gap-6 lg:gap-8 flex-grow pb-2 lg:pb-4">
                 {/* Entregables */}
-                <div className="w-full lg:w-7/12 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] lg:h-full lg:overflow-y-auto pr-3 sm:pr-4 border border-purple-50">
+                <div className="w-full lg:w-7/12 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] pr-3 sm:pr-4 border border-purple-50">
                   <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-3 sm:mb-4 text-[#2D1B4E] border-b pb-2 flex justify-between items-center">
                     ¿Qué incluye?
                   </h3>
