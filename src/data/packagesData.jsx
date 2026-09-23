@@ -23,7 +23,7 @@ export const softwarePackages = [
       "Objetivo: Mostrar profesionalismo y recibir mensajes listos para cerrar ventas.",
       "Plus: Soporte y mantenimiento gratuito por 1 mes."
     ],
-    price: "Ref 120"
+    price: "A cotizar"
   },
   {
     id: "soft-2",
@@ -70,7 +70,7 @@ export const marketingPackages = [
       "Grilla de contenido mensual.",
       "Redacción de copies y optimización de la cuenta."
     ],
-    price: "Ref 150"
+    price: "A cotizar"
   },
   {
     id: "mark-2",
@@ -88,7 +88,7 @@ export const marketingPackages = [
       "Redacción de copies y optimización de la cuenta.",
       "1 campaña de ads mensual."
     ],
-    price: "Ref 280"
+    price: "A cotizar"
   },
   {
     id: "mark-3",
@@ -106,7 +106,7 @@ export const marketingPackages = [
       "Redacción de copies y optimización de la cuenta.",
       "2 campañas de ads mensual."
     ],
-    price: "Ref 350"
+    price: "A cotizar"
   }
 ];
 
