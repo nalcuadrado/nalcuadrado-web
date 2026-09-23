@@ -33,7 +33,7 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
         <div className="relative flex justify-between items-center transition-all duration-300 bg-[#121212]/85 backdrop-blur-xl shadow-2xl px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 rounded-full border border-white/10">
           
           {/* 1. Logo (Extremo Izquierdo) */}
-          <div className="flex items-center justify-start flex-1 z-10">
+          <div className="flex items-center justify-start flex-1 z-10 pointer-events-auto">
             <div 
               className="flex items-center cursor-pointer group shrink-0"
               onClick={() => handleNavClick('inicio')}
@@ -50,8 +50,8 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
             </div>
           </div>
           
-          {/* 2. Desktop Menu - Absolutamente Centrado en el Medio del Navbar */}
-          <div className="hidden xl:flex items-center justify-center gap-3 2xl:gap-8 absolute inset-x-0 mx-auto w-fit z-10 pointer-events-auto">
+          {/* 2. Desktop Menu - Absolutamente Centrado en el Medio del Navbar con prioridad de clic (z-20) */}
+          <div className="hidden xl:flex items-center justify-center gap-3 2xl:gap-8 absolute inset-x-0 mx-auto w-fit z-20 pointer-events-auto">
             {navLinks.map((item) => (
               <button 
                 key={item.id} 
@@ -65,7 +65,7 @@ export const Navbar = ({ isScrolled, scrollTo }) => {
           </div>
 
           {/* 3. Botón / Menú Hamburguesa (Extremo Derecho) */}
-          <div className="flex items-center justify-end flex-1 z-10">
+          <div className="flex items-center justify-end flex-1 z-10 pointer-events-auto">
             {/* Desktop CTA Button */}
             <div className="hidden xl:block shrink-0">
               <button 
