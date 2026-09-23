@@ -59,9 +59,22 @@ body, p, span, div, button, input, textarea, select {
 
 /* Ocultar el cursor predeterminado del navegador para que solo se vea el cursor personalizado */
 @media (pointer: fine) {
-  html, body, a, button, input, textarea, select, [role="button"], * {
+  body:not(.default-cursor),
+  body:not(.default-cursor) * {
     cursor: none !important;
   }
+}
+
+/* Restaurar cursor nativo normal en páginas privadas o de lectura (propuestas) */
+body.default-cursor,
+body.default-cursor * {
+  cursor: auto !important;
+}
+body.default-cursor a,
+body.default-cursor button,
+body.default-cursor [role="button"],
+body.default-cursor .cursor-pointer {
+  cursor: pointer !important;
 }
 
 /* Inputs Personalizados Minimalistas */
@@ -149,5 +162,35 @@ body, p, span, div, button, input, textarea, select {
   0% { transform: scale(1) translate(0, 0); }
   50% { transform: scale(1.1) translate(2%, 3%); }
   100% { transform: scale(1) translate(-2%, -1%); }
+}
+
+/* Utilidad para ocultar barras de scroll nativas manteniendo el desplazamiento */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Ocultar botones flotantes inyectados por extensiones de scroll del navegador */
+[id*="scroll-to-top"],
+[class*="scroll-to-top"],
+[id*="scrollToTop"],
+[class*="scrollToTop"],
+[id*="scroll-button"],
+[class*="scroll-button"],
+[id*="scrollbuttons"],
+[class*="scrollbuttons"],
+[id*="prt-scroll"],
+[class*="prt-scroll"],
+[id*="ext-scroll"],
+[class*="ext-scroll"],
+[aria-label*="Scroll"],
+[title*="Scroll to"] {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
 }
 
